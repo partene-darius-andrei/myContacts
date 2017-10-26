@@ -51,7 +51,7 @@ public class Contact implements Parcelable {
 
     }
 
-    //region Getters
+    //region Parcel implementation
 
     protected Contact(Parcel in) {
         firstName = in.readString();
@@ -74,6 +74,26 @@ public class Contact implements Parcelable {
             return new Contact[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(firstName);
+        parcel.writeString(lastName);
+        parcel.writeString(age);
+        parcel.writeString(thumbnail);
+        parcel.writeString(picture);
+        parcel.writeString(nationality);
+        parcel.writeString(email);
+    }
+
+    //endregion
+
+    //region Getters
 
     public String getFirstName() {
         return firstName;
@@ -120,19 +140,5 @@ public class Contact implements Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(firstName);
-        parcel.writeString(lastName);
-        parcel.writeString(age);
-        parcel.writeString(thumbnail);
-        parcel.writeString(picture);
-        parcel.writeString(nationality);
-        parcel.writeString(email);
-    }
 }

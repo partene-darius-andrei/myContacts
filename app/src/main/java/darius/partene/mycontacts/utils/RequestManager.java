@@ -14,13 +14,10 @@ public class RequestManager {
 	private static final int TIMEOUT = 20000;
 
 	/**
-	 * the queue :-)
+	 * the queue
 	 */
 	private static RequestQueue mRequestQueue;
 
-	/**
-	 * Nothing to see here.
-	 */
 	private RequestManager() {
 		// no instances
 	}

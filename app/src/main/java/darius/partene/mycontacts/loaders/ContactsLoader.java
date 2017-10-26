@@ -21,6 +21,10 @@ import darius.partene.mycontacts.utils.RequestManager;
 
 public class ContactsLoader {
 
+    /**
+     * loads the list of contacts and sends them back through callback
+     */
+
     private String TAG = "ContactsLoader";
     private String url = "https://randomuser.me/api?results=20&page=";
     private Listener listener;
@@ -29,6 +33,7 @@ public class ContactsLoader {
         this.listener = listener;
     }
 
+    //send the request
     public void loadContacts(int page) {
 
         JsonRequest request = new JsonRequest(url + page, null, new Response.Listener<JSONObject>() {
@@ -44,7 +49,7 @@ public class ContactsLoader {
         });
 
 
-        // Access the RequestQueue through your singleton class.
+        // Access the RequestManager through your singleton class.
         RequestManager.addRequest(request, TAG);
 
     }

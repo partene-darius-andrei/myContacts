@@ -17,9 +17,11 @@ import darius.partene.mycontacts.utils.CircleTransform;
 
 public class ActivityContactDetails extends ToolbarActivity {
 
+    //ui variables
     private TextView firstName, lastName, age, nationality, email;
     private ImageView image;
 
+    //model which populates screen
     private Contact contact;
 
     @Override
@@ -54,6 +56,7 @@ public class ActivityContactDetails extends ToolbarActivity {
         startActivity(Intent.createChooser(emailIntent, "Send email..."));
     }
 
+    //update the screen with the information from the model
     private void setData() {
 
         if (contact == null) {

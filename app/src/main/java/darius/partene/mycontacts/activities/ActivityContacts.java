@@ -42,22 +42,23 @@ public class ActivityContacts extends ToolbarActivity implements ContactsAdapter
 
     private void getData() {
         showLoading();
-        page++;
-
-        loader.loadContacts(page);
+        loader.loadContacts(page++);
     }
 
+    //callback from adapter when the user scrolled to the bottom
     @Override
     public void reachedBottom() {
         getData();
     }
 
+    //finished loading contacts
     @Override
     public void onComplete(ArrayList<Contact> contacts) {
         hideLoading();
         adapter.addContacts(contacts);
     }
 
+    //somethng went wrong
     @Override
     public void onFail(String message) {
         hideLoading();

@@ -19,6 +19,10 @@ public class ToolbarActivity extends BaseActivity {
     private JumpingBeans jumpingBeans;
     private TextView loading;
 
+    /**
+     * Full control over toolbar with own views or other methods (ex: show or hide loading)
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
