@@ -1,0 +1,119 @@
+package darius.partene.mycontacts.models;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Created by partened on 26.10.2017.
+ */
+
+public class Contact implements Parcelable{
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String thumbnail;
+    private String picture;
+    private String nationality;
+
+    public Contact(JSONObject item) {
+        if (item.has("name")) {
+            try {
+                JSONObject nameJson = item.getJSONObject("name");
+                firstName = nameJson.optString("first");
+                lastName = nameJson.optString("last");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        age = getAge(item.optJSONObject("dob"));
+
+        if (item.has("picture")) {
+            try {
+                JSONObject nameJson = item.getJSONObject("picture");
+                thumbnail = nameJson.optString("thumbnail");
+                picture = nameJson.optString("large");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        nationality = item.optString("nat");
+
+    }
+
+    //region Getters
+
+    protected Contact(Parcel in) {
+        firstName = in.readString();
+        lastName = in.readString();
+        age = in.readString();
+        thumbnail = in.readString();
+        picture = in.readString();
+        nationality = in.readString();
+    }
+
+    public static final Creator<Contact> CREATOR = new Creator<Contact>() {
+        @Override
+        public Contact createFromParcel(Parcel in) {
+            return new Contact(in);
+        }
+
+        @Override
+        public Contact[] newArray(int size) {
+            return new Contact[size];
+        }
+    };
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    //endregion
+
+    private String getAge(JSONObject dateOfBirth) {
+        if (dateOfBirth == null) {
+            return "";
+        }
+        return "";
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(firstName);
+        parcel.writeString(lastName);
+        parcel.writeString(age);
+        parcel.writeString(thumbnail);
+        parcel.writeString(picture);
+        parcel.writeString(nationality);
+    }
+}
