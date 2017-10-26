@@ -3,6 +3,9 @@ package darius.partene.mycontacts.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+import org.joda.time.format.DateTimeFormat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,7 +13,7 @@ import org.json.JSONObject;
  * Created by partened on 26.10.2017.
  */
 
-public class Contact implements Parcelable{
+public class Contact implements Parcelable {
     private String firstName;
     private String lastName;
     private String age;
@@ -29,7 +32,7 @@ public class Contact implements Parcelable{
             }
         }
 
-        age = getAge(item.optJSONObject("dob"));
+        age = getAge(item.optString("dob"));
 
         if (item.has("picture")) {
             try {
@@ -94,9 +97,12 @@ public class Contact implements Parcelable{
 
     //endregion
 
-    private String getAge(JSONObject dateOfBirth) {
-        if (dateOfBirth == null) {
-            return "";
+    private String getAge(String dateOfBirth) {
+        if (dateOfBirth != null) {
+            LocalDate date = LocalDate.parse(dateOfBirth, DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+            LocalDate now = new LocalDate();
+            Years age = Years.yearsBetween(date, now);
+            return String.valueOf(age.getYears());
         }
         return "";
     }

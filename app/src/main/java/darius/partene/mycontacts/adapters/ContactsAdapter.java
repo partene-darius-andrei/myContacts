@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import darius.partene.mycontacts.R;
 import darius.partene.mycontacts.activities.ActivityContactDetails;
 import darius.partene.mycontacts.models.Contact;
+import darius.partene.mycontacts.utils.CircleTransform;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -45,10 +46,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ContactViewHolder(View view) {
             super(view);
             container = view.findViewById(R.id.container);
-            name =  view.findViewById(R.id.name);
-            age =  view.findViewById(R.id.age);
-            nationality =  view.findViewById(R.id.nationality);
-            thumbnail =  view.findViewById(R.id.thumbnail);
+            name = view.findViewById(R.id.name);
+            age = view.findViewById(R.id.age);
+            nationality = view.findViewById(R.id.nationality);
+            thumbnail = view.findViewById(R.id.thumbnail);
         }
     }
 
@@ -66,12 +67,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ContactViewHolder contactViewHolder = (ContactViewHolder) holder;
         final Contact contact = contacts.get(position);
-
-        contactViewHolder.name.setText(contact.getFirstName() + " " + contact.getLastName());
-        contactViewHolder.age.setText(contact.getAge());
-        contactViewHolder.nationality.setText(contact.getNationality());
-
         final Context context = contactViewHolder.container.getContext();
+
+        contactViewHolder.name.setText(context.getString(R.string.name_prefix) + " " + contact.getFirstName() + " " + contact.getLastName());
+        contactViewHolder.age.setText(context.getString(R.string.age_prefix) + " " + contact.getAge());
+        contactViewHolder.nationality.setText(context.getString(R.string.nationality_prefix) + " " + contact.getNationality());
+
+
         contactViewHolder.container.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,13 +85,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
 
         if (!TextUtils.isEmpty(contact.getThumbnail())) {
-            Picasso.with(context).load(contact.getThumbnail())
+            Picasso.with(context).load(contact.getThumbnail()).transform(new CircleTransform())
                     .placeholder(R.drawable.ic_account_placeholder)
                     .into(contactViewHolder.thumbnail);
         }
 
         //reached the end of the list
-        if (position == contacts.size() - 1){
+        if (position == contacts.size() - 1) {
             listener.getMoreData();
         }
     }
@@ -99,7 +101,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return contacts.size();
     }
 
-    public interface Listener{
+    public interface Listener {
         void getMoreData();
     }
 

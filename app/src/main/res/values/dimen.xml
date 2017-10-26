@@ -4,7 +4,7 @@
     <dimen name="spacing_M">10dp</dimen>
     <dimen name="spacing_L">15dp</dimen>
 
-    <dimen name="font_size_S">5sp</dimen>
-    <dimen name="font_size_M">10sp</dimen>
-    <dimen name="font_size_L">15sp</dimen>
+    <dimen name="font_size_S">10sp</dimen>
+    <dimen name="font_size_M">15sp</dimen>
+    <dimen name="font_size_L">30sp</dimen>
 </resources>

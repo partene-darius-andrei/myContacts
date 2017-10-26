@@ -2,15 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="darius.partene.mycontacts">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:name=".MyContacts"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_account_circle_blue_24dp"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ActivityContacts">
             <intent-filter>
@@ -20,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ActivityContactDetails">
+        </activity>
+        <activity android:name=".activities.BaseActivity">
+        </activity>
+        <activity android:name=".activities.ToolbarActivity">
         </activity>
     </application>
 

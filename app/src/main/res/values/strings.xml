@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">My Contacts</string>
-    <string name="my_contacts">My Contacts</string>
+
+    <!--My contacts screen-->
+    <string name="age_prefix">Age:</string>
+    <string name="name_prefix">Name:</string>
+    <string name="nationality_prefix">Nationality:</string>
 </resources>
