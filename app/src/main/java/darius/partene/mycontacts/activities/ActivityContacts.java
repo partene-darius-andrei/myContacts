@@ -1,6 +1,5 @@
 package darius.partene.mycontacts.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +11,11 @@ import darius.partene.mycontacts.R;
 import darius.partene.mycontacts.adapters.ContactsAdapter;
 import darius.partene.mycontacts.loaders.ContactsLoader;
 import darius.partene.mycontacts.models.Contact;
-import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
-public class ActivityContacts extends ToolbarActivity {
+public class ActivityContacts extends ToolbarActivity implements ContactsAdapter.Listener, ContactsLoader.Listener {
 
     private ContactsAdapter adapter;
+    private ContactsLoader loader;
     private int page = 0;
 
     @Override
@@ -26,38 +25,42 @@ public class ActivityContacts extends ToolbarActivity {
         setTitle(R.string.app_name);
         hideBackIcon();
         initRecyclerView();
-        loadData();
+        initLoader();
+        getData();
     }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setItemAnimator(new SlideInLeftAnimator());
-        adapter = new ContactsAdapter(new ContactsAdapter.Listener() {
-            @Override
-            public void getMoreData() {
-                loadData();
-            }
-        });
+        adapter = new ContactsAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 
-    private void loadData() {
+    private void initLoader() {
+        loader = new ContactsLoader(this);
+    }
+
+    private void getData() {
         showLoading();
         page++;
-        ContactsLoader loader = new ContactsLoader(new ContactsLoader.Listener() {
-            @Override
-            public void onComplete(ArrayList<Contact> contacts) {
-                hideLoading();
-                adapter.addContacts(contacts);
-            }
 
-            @Override
-            public void onFail(String message) {
-                hideLoading();
-                Toast.makeText(ActivityContacts.this, message, Toast.LENGTH_SHORT).show();
-            }
-        });
         loader.loadContacts(page);
+    }
+
+    @Override
+    public void reachedBottom() {
+        getData();
+    }
+
+    @Override
+    public void onComplete(ArrayList<Contact> contacts) {
+        hideLoading();
+        adapter.addContacts(contacts);
+    }
+
+    @Override
+    public void onFail(String message) {
+        hideLoading();
+        Toast.makeText(ActivityContacts.this, message, Toast.LENGTH_SHORT).show();
     }
 }

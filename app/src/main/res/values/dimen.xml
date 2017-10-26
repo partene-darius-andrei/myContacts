@@ -6,5 +6,5 @@
 
     <dimen name="font_size_S">10sp</dimen>
     <dimen name="font_size_M">15sp</dimen>
-    <dimen name="font_size_L">30sp</dimen>
+    <dimen name="font_size_L">24sp</dimen>
 </resources>

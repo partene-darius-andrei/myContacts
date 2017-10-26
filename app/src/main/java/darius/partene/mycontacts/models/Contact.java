@@ -20,6 +20,7 @@ public class Contact implements Parcelable {
     private String thumbnail;
     private String picture;
     private String nationality;
+    private String email;
 
     public Contact(JSONObject item) {
         if (item.has("name")) {
@@ -46,6 +47,8 @@ public class Contact implements Parcelable {
 
         nationality = item.optString("nat");
 
+        email = item.optString("email");
+
     }
 
     //region Getters
@@ -57,6 +60,7 @@ public class Contact implements Parcelable {
         thumbnail = in.readString();
         picture = in.readString();
         nationality = in.readString();
+        email = in.readString();
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {
@@ -95,6 +99,14 @@ public class Contact implements Parcelable {
         return picture;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     //endregion
 
     private String getAge(String dateOfBirth) {
@@ -121,5 +133,6 @@ public class Contact implements Parcelable {
         parcel.writeString(thumbnail);
         parcel.writeString(picture);
         parcel.writeString(nationality);
+        parcel.writeString(email);
     }
 }

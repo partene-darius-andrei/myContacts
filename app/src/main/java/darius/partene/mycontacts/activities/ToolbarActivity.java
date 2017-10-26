@@ -40,7 +40,7 @@ public class ToolbarActivity extends BaseActivity {
         stub.inflate();
     }
 
-    public void setTitle(String title) {
+    protected void setTitle(String title) {
         this.title.setText(title);
     }
 
@@ -48,22 +48,22 @@ public class ToolbarActivity extends BaseActivity {
         this.title.setText(getString(id));
     }
 
-    public void hideBackIcon() {
-        backIcon.setVisibility(View.GONE);
+    protected void hideBackIcon() {
+        backIcon.setImageResource(0);
     }
 
-    public void showBackIcon() {
+    protected void showBackIcon() {
         backIcon.setVisibility(View.VISIBLE);
     }
 
-    public void showLoading() {
+    protected void showLoading() {
         loading.setVisibility(View.VISIBLE);
         jumpingBeans = JumpingBeans.with(loading)
                 .appendJumpingDots()
                 .build();
     }
 
-    public void hideLoading() {
+    protected void hideLoading() {
         loading.setVisibility(View.GONE);
         jumpingBeans.stopJumping();
     }

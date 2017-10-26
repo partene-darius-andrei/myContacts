@@ -26,9 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_S"
-            android:text="First name"
+            android:text="@string/first_name"
             android:textColor="@color/blue"
-            android:textSize="@dimen/font_size_M"/>
+            android:textSize="@dimen/font_size_S"/>
 
         <TextView
             android:id="@+id/first_name"
@@ -38,37 +38,79 @@
             android:background="@drawable/bg_transparent_blue_stroke"
             android:padding="@dimen/spacing_S"
             android:textColor="@color/blue"
-            android:textSize="@dimen/font_size_L"/>
+            android:textSize="@dimen/font_size_M"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Last name"/>
+            android:padding="@dimen/spacing_S"
+            android:text="@string/last_name"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_S"/>
 
         <TextView
             android:id="@+id/last_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_S"
+            android:background="@drawable/bg_transparent_blue_stroke"
+            android:padding="@dimen/spacing_S"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_M"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Age"/>
+            android:padding="@dimen/spacing_S"
+            android:text="@string/age"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_S"/>
 
         <TextView
             android:id="@+id/age"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_S"
+            android:background="@drawable/bg_transparent_blue_stroke"
+            android:padding="@dimen/spacing_S"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_M"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nationality"/>
+            android:padding="@dimen/spacing_S"
+            android:text="@string/nationality"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_S"/>
 
         <TextView
             android:id="@+id/nationality"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_S"
+            android:background="@drawable/bg_transparent_blue_stroke"
+            android:padding="@dimen/spacing_S"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_M"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_S"
+            android:text="@string/email"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_S"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_S"
+            android:background="@drawable/bg_transparent_blue_stroke"
+            android:padding="@dimen/spacing_S"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/font_size_M"/>
     </LinearLayout>
 
 </ScrollView>

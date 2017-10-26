@@ -28,7 +28,10 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/back_icon"
             android:layout_toStartOf="@+id/loading"
-            android:padding="@dimen/spacing_M"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/spacing_M"
+            android:paddingTop="@dimen/spacing_M"
             android:textColor="@color/blue"
             android:textSize="@dimen/font_size_L"/>
 

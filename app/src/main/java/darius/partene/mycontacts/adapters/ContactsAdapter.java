@@ -3,7 +3,6 @@ package darius.partene.mycontacts.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -69,7 +67,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final Contact contact = contacts.get(position);
         final Context context = contactViewHolder.container.getContext();
 
-        contactViewHolder.name.setText(context.getString(R.string.name_prefix) + " " + contact.getFirstName() + " " + contact.getLastName());
+        contactViewHolder.name.setText(context.getString(R.string.name_prefix) + " " + contact.getFullName());
         contactViewHolder.age.setText(context.getString(R.string.age_prefix) + " " + contact.getAge());
         contactViewHolder.nationality.setText(context.getString(R.string.nationality_prefix) + " " + contact.getNationality());
 
@@ -92,7 +90,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         //reached the end of the list
         if (position == contacts.size() - 1) {
-            listener.getMoreData();
+            listener.reachedBottom();
         }
     }
 
@@ -102,7 +100,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public interface Listener {
-        void getMoreData();
+        void reachedBottom();
     }
 
 }

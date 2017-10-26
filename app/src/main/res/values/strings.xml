@@ -5,4 +5,11 @@
     <string name="age_prefix">Age:</string>
     <string name="name_prefix">Name:</string>
     <string name="nationality_prefix">Nationality:</string>
+
+    <!--Contact details screen-->
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="age">Age</string>
+    <string name="nationality">Nationality</string>
+    <string name="email">Email</string>
 </resources>
